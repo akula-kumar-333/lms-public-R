@@ -19,6 +19,8 @@ pipeline {
         stage('Build frontend') {
             steps {
                 echo 'Building frontend'
+                sh 'cd webapp && npm install'
+                sh 'cd webapp && npm run build'
             }
         }
     }
