@@ -11,8 +11,8 @@ pipeline {
         stage('prisma') {
             steps {
                 echo 'pm2 steps...'
-                sh 'sudo npm install -g pm2'
-                sh 'npx prisma db push'
+                sh 'cd api && sudo npm install -g pm2'
+                sh 'cd api && npx prisma db push'
             }
         }
         stage('Deploy') {
