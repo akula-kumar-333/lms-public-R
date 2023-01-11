@@ -8,9 +8,11 @@ pipeline {
                 sh 'cd api && npm run build'
             }
         }
-        stage('Test') {
+        stage('prisma') {
             steps {
-                echo 'Testing...'
+                echo 'pm2 steps...'
+                sh 'sudo npm install -g pm2'
+                sh 'npx prisma db push'
             }
         }
         stage('Deploy') {
