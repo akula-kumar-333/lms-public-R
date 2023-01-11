@@ -1,20 +1,21 @@
 pipeline {
-    agent any
-
+    agent { node { label 'lms' } }
     stages {
         stage('Build') {
             steps {
-                echo 'Building on VM'
-                sh 'cd webapp && npm install'
-                sh 'cd webapp && npm run build'
+                echo 'Building...'
             }
         }
-
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
         stage('Deploy') {
             steps {
-                echo 'Deploying..'
-                sh 'scp -r webapp/dist ubuntu@172.31.14.26:/home/ubuntu/dist'
+                echo 'Deploying...'
             }
         }
     }
 }
+
