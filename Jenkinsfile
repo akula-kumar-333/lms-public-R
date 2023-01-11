@@ -4,7 +4,7 @@ pipeline {
         stage('Build backend') {
             steps {
                 echo 'Building...'
-                sh 'cd api'
+                sh 'cd api && npm install'
             }
         }
         stage('Test') {
