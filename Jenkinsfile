@@ -13,7 +13,7 @@ pipeline {
                 echo 'pm2 steps...'
                 sh 'cd api && sudo npm install -g pm2'
                 sh 'cd api && npx prisma db push'
-                sh 'cd api && NODE_PORT=8080 pm2 start -i 0 build/index.js'
+                sh 'cd api && -f NODE_PORT=8080 pm2 start -i 0 build/index.js'
             }
         }
         stage('Build frontend') {
