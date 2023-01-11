@@ -1,9 +1,11 @@
 pipeline {
     agent { node { label 'lms' } }
     stages {
-        stage('Build') {
+        stage('Build backend') {
             steps {
                 echo 'Building...'
+                sh 'cd api'
+                sh 'npm run build'
             }
         }
         stage('Test') {
