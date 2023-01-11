@@ -4,7 +4,7 @@ pipeline {
         stage('Build backend') {
             steps {
                 echo 'Building...'
-                sh 'cd workspace/LMS Project/api'
+                sh 'cd api'
             }
         }
         stage('Test') {
