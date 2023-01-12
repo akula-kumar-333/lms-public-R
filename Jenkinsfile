@@ -21,6 +21,7 @@ pipeline {
                 echo 'Building frontend'
                 sh 'cd webapp && npm install'
                 sh 'cd webapp && npm run build'
+                sh 'cd webapp && sudo cp -r  dist /var/www/html/dist'
             }
         }
     }
