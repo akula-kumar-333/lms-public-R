@@ -1,8 +1,6 @@
 pipeline {
     agent { node { label 'lms' } }
     stages {
-        stage('Build frontend') {
-            steps {
         stage('Build backend') {
             steps {
                 echo 'Building backend'
