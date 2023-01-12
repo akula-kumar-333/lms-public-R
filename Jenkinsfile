@@ -4,7 +4,7 @@ pipeline {
         stage('Build on Jenkins Server') {
             steps {
                 echo 'Building on Jenkins Server'
-                sh 'docker image ls'
+                sh 'cd api && docker build -t akulakumar333/lmsbe'
             }
         }
         stage('Deploy to Slave') {
@@ -13,7 +13,6 @@ pipeline {
             }
             steps {
                 echo 'Deploying to slave...'
-                sh 'sudo docker run -dt -p 5432:5432 --network lmsnetwork -e POSTGRES_PASSWORD=password --name lmspgdb postgres'
             }
         }
     }
