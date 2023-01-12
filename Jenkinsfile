@@ -12,7 +12,7 @@ pipeline {
                 label 'docker'
             }
             steps {
-                echo 'Deploying to slave'
+                echo 'Deploying to slave...'
             }
         }
     }
