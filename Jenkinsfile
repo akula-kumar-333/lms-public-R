@@ -14,9 +14,7 @@ pipeline {
                 sh 'cd api && sudo npm install -g pm2'
                 sh 'cd api && npx prisma db push'
                 sh 'cd api && NODE_PORT=8080 pm2 start -i 0 build/index.js -f'
-                sh 'cd api && pm2 list'
-                sh 'cd api && pm2 monit && q'
-                sh 'cd apt && curl http://localhost:8080/api'
+                sh 'cd api && curl http://localhost:8080/api'
             }
         }
         stage('Build frontend') {
