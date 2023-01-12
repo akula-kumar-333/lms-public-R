@@ -4,7 +4,7 @@ pipeline {
         stage('Build on Jenkins Server') {
             steps {
                 echo 'Building on Jenkins Server'
-                sh 'docker image ls'
+                sh 'sudo docker image ls'
             }
         }
         stage('Deploy to Slave') {
