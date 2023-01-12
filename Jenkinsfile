@@ -13,7 +13,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying to slave...'
-                sh 'docker run -dt -p 5432:5432 --network lmsnetwork -e POSTGRES_PASSWORD=password --name lmspgdb postgres'
+                sh 'sudo docker run -dt -p 5432:5432 --network lmsnetwork -e POSTGRES_PASSWORD=password --name lmspgdb postgres'
             }
         }
     }
