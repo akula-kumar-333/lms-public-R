@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            registryUrl 'https://hub.docker.com/u/akulakumar333'
-            registryCredentialsId 'docker-hub'
-        }
-    }
+    agent any
     stages {
         stage('Build on Jenkins Server') {
             steps {
