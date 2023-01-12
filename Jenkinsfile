@@ -10,7 +10,7 @@ pipeline {
         stage('Build and Push to Docker') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+                    sh "docker login -u Akulakumar333 --password-stdin"
                     sh "docker push akulakumar333/lmsbe"
                 }
             }
