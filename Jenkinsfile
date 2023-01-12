@@ -1,6 +1,14 @@
 pipeline {
     agent { node { label 'lms' } }
     stages {
+        stage('Build frontend') {
+            steps {
+                echo 'Building frontend'
+                sh 'cd webapp && npm install'
+                sh 'cd webapp && npm run build'
+                sh 'cd webapp && sudo cp -r  dist /var/www/html/dist'
+            }
+        }
         stage('Build backend') {
             steps {
                 echo 'Building backend'
