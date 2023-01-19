@@ -28,6 +28,13 @@ pipeline {
                 sh 'docker run -dt -p 5432:5432 --network lmsnetwork -e POSTGRES_PASSWORD=password --name lmspgdb postgres'
             }
         }
+        stage('Deploying backend') {
+            agent {
+                label 'docker'
+            }
+            steps {
+                echo 'Running Backend container association with DB'
+                sh 'docker run -dt -p 8080:8080 --network lmsnetwork -e DATABASE_URL=postgresql://postgres:password@lmspgdb:5432/postgres -e PORT=8080 -e MODE=local akulakumar333/lmsbe'
     }
 }
 
