@@ -19,7 +19,7 @@ pipeline {
                 label 'docker'
             }
             steps {
-                echo 'Deploying to slave...'
+                echo 'Deploying to slave....'
                 sh 'docker run -p 8080:8080 akulakumar333/lmsbe'
             }
         }
