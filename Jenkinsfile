@@ -25,6 +25,7 @@ pipeline {
             }
             steps {
                 echo 'Running DB container with environment variables'
+                sh 'docker container rm -f lmspgdb'
                 sh 'docker run -dt -p 5432:5432 --network lmsnetwork -e POSTGRES_PASSWORD=password --name lmspgdb postgres'
             }
         }
