@@ -36,5 +36,6 @@ pipeline {
                 echo 'Running Backend container association with DB'
                 sh 'docker run -dt -p 8080:8080 --network lmsnetwork -e DATABASE_URL=postgresql://postgres:password@lmspgdb:5432/postgres -e PORT=8080 -e MODE=local akulakumar333/lmsbe'
     }
+  }
 }
-
+}
