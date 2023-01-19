@@ -35,6 +35,7 @@ pipeline {
             }
             steps {
                 echo 'Running Backend container association with DB'
+                sh 'docker container rm -f  akulakumar333/lmsbe'
                 sh 'docker run -dt --name lmsback -p 8080:8080 --network lmsnetwork -e DATABASE_URL=postgresql://postgres:password@lmspgdb:5432/postgres -e PORT=8080 -e MODE=local akulakumar333/lmsbe'
     }
   }
@@ -44,6 +45,7 @@ pipeline {
             }
             steps {
                 echo 'Running Frontend container for finally deploying the complete website'
+                sh 'docker container rm -f lmsfront'
                 sh 'docker container run -dt -p 3000:3000 --name lmsfront akulakumar333/lmsfe'
   }
  }
