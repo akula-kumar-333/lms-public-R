@@ -12,18 +12,20 @@ pipeline {
         stage('Push Image') {
             steps {
                 withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+                    echo 'pushing backend image'
                     sh 'docker push akulakumar333/lmsbe'
+                    echo 'pushing frontend image'
                     sh 'docker push akulakumar333/lmsfe'
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploying DB') {
             agent {
                 label 'docker'
             }
             steps {
-                echo 'Deploying to slave....'
-                //sh 'docker run -p 8080:8080 akulakumar333/lmsbe'
+                echo 'Running DB container with environment variables'
+                sh 'docker run -dt -p 5432:5432 --network lmsnetwork -e POSTGRES_PASSWORD=password --name lmspgdb postgres'
             }
         }
     }
