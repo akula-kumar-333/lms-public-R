@@ -46,5 +46,6 @@ pipeline {
             steps {
                 echo 'Running Frontend container for finally deploying the complete website'
                 sh 'docker container run -dt -p 3000:3000 --name lmsfront akulakumar333/lmsfe'
-}
+  }
+ }
 }
