@@ -20,7 +20,6 @@ spec:
         env:
           - name: POSTGRES_PASSWORD
             value: "password"
-        network: "lmsnetwork"
       - name: lms-be
         image: akulakumar333/lmsbe
         ports:
@@ -32,5 +31,4 @@ spec:
             value: "8080"
           - name: MODE
             value: "local"
-        network: "lmsnetwork"
 
