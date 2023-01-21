@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lms-fe
+  labels:
+    app: lms-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lms-app
+  template:
+    metadata:
+      labels:
+        app: lms-app
+    spec:
+      containers:
+      - name: lms-fe
+        image: akulakumar333/lmsfe
+        ports:
+        - containerPort: 3000
