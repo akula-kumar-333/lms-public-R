@@ -26,6 +26,7 @@ pipeline {
             steps {
                 sh 'kubectl apply -f Deployment-BE-DB.yml'
                 sh 'kubectl apply -f Deployment-FE.yml'
+                sh 'kubectl apply -f Service.yml'
            
   }
  }
