@@ -19,3 +19,5 @@ spec:
         image: akulakumar333/lmsfe
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
+
