@@ -24,7 +24,8 @@ pipeline {
                 label 'k8s'
             }
             steps {
-                sh 'kubectl apply -f Deployment-BE-DB.yml'
+                sh 'kubectl apply -f Deployment-DB.yml'
+                sh 'kubectl apply -f Deployment-BE.yml'
                 sh 'kubectl apply -f Deployment-FE.yml'
                 sh 'kubectl apply -f Service.yml'
            
