@@ -1,0 +1,12 @@
+apiVersion: app/v1
+kind: Service
+metadata:
+  name: lms-deployment
+spec:
+  type: LoadBalancer
+  selector:
+    app: lms-app
+  ports:
+  - name: lms-fe
+    port: 3000
+    targetPort: 3000
