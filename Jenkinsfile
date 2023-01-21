@@ -25,8 +25,11 @@ pipeline {
             }
             steps {
                 sh 'kubectl apply -f Deployment-DB.yml'
+                sh 'kubectl rollout restart deployment/lms-db'
                 sh 'kubectl apply -f Deployment-BE.yml'
+                sh 'kubectl rollout restart deployment/lms-be'
                 sh 'kubectl apply -f Deployment-FE.yml'
+                sh 'kubectl rollout restart deployment/lms-fe'
                 sh 'kubectl apply -f Service.yml'
            
   }
