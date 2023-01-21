@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lms-db-service
+spec:
+  selector:
+    app: lms-app
+  ports:
+    - name: db-port
+      port: 5432
+      targetPort: 5432
+  type: ClusterIP
