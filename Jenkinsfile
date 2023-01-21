@@ -24,7 +24,7 @@ pipeline {
                 label 'k8s'
             }
             steps {
-                sh 'kubectl'
+                sh 'kubectl apply -f Deployment-BE-DB.yml'
            
   }
  }
