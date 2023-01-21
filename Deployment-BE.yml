@@ -24,3 +24,5 @@ spec:
           value: "8080"
         - name: MODE
           value: "local"
+        imagePullPolicy: Always
+
