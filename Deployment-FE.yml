@@ -18,4 +18,4 @@ spec:
       - name: lms-fe
         image: akulakumar333/lmsfe
         ports:
-        - containerPort: 3000
+        - containerPort: 80
