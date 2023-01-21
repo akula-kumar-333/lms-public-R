@@ -19,37 +19,13 @@ pipeline {
                 }
             }
         }
-        stage('Deploying DB') {
+        stage('Deploying on k8s') {
             agent {
-                label 'docker'
+                label 'k8s'
             }
             steps {
-                echo 'Removing old DB container with environment variables'
-                sh 'docker container rm -f lmspgdb'
-                echo 'Running new DB container with environment variables' 
-                sh 'docker run -dt -p 5432:5432 --network lmsnetwork -e POSTGRES_PASSWORD=password --name lmspgdb postgres'
-            }
-        }
-        stage('Deploying backend') {
-            agent {
-                label 'docker'
-            }
-            steps {
-                echo 'Removing old Backend container associated with DB'
-                sh 'docker container rm -f lmsback'
-                echo 'Running new Backend container associated with DB'
-                sh 'docker run -dt --name lmsback -p 8080:8080 --network lmsnetwork -e DATABASE_URL=postgresql://postgres:password@lmspgdb:5432/postgres -e PORT=8080 -e MODE=local akulakumar333/lmsbe'
-    }
-  }
-        stage('Deploying frontend') {
-            agent {
-                label 'docker'
-            }
-            steps {
-                echo 'Removing old Frontend container'
-                sh 'docker container rm -f lmsfront'
-                echo 'Running new Frontend container for finally deploying the complete website'
-                sh 'docker container run -dt -p 3000:3000 --name lmsfront akulakumar333/lmsfe'
+                sh 'kubectl'
+           
   }
  }
 }
