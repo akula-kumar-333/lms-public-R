@@ -1,0 +1,35 @@
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lms-be&db
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lms-app
+  template:
+    metadata:
+      labels:
+        app: lms-app
+    spec:
+      containers:
+      - name: lmspgdb
+        image: postgres
+        ports:
+          - containerPort: 5432
+        env:
+          - name: POSTGRES_PASSWORD
+            value: "password"
+        network: "lmsnetwork"
+      - name: lms-be
+        image: akulakumar333/lmsbe
+        ports:
+          - containerPort: 8080
+        env:
+          - name: DATABASE_URL
+            value: "postgresql://postgres:password@lmspgdb:5432/postgres"
+          - name: PORT
+            value: "8080"
+          - name: MODE
+            value: "local"
+        network: "lmsnetwork"
