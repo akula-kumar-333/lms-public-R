@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lms-be&db
+  name: lms-be-db
 spec:
   replicas: 2
   selector:
@@ -33,3 +33,4 @@ spec:
           - name: MODE
             value: "local"
         network: "lmsnetwork"
+
